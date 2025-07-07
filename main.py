@@ -13,17 +13,46 @@
 Парам пам-пам
 """
 
-n = input()
+# n = input()
+# n = n.split()
+# count = []
+# for j in range(len(n)):
+#     c = 0
+#     for i in range(len(n[j])):
+#         if n[j][i] in ("а", "у", "е", "о", "и", "я", "ю", "ы", "э", "ё"):
+#             c += 1
+#     count.append(c)
+# count = set(count)
+# if len(count) == 1:
+#     print("Парам пам-пам")
+# else:
+#     print("Пам парам")
+
+
+n = "пара-ра-рам рам-пам-папам па-ра-па-дам"
 n = n.split()
-count = []
-for j in range(len(n)):
-    c = 0
-    for i in range(len(n[j])):
-        if n[j][i] in ("а", "у", "е", "о", "и", "я", "ю", "ы", "э", "ё"):
-            c += 1
-    count.append(c)
-count = set(count)
-if len(count) == 1:
-    print("Парам пам-пам")
-else:
-    print("Пам парам")
+vowels = ["а", "у", "е", "о", "и", "я", "ю", "ы", "э", "ё"]
+
+
+def count_vowels_in_el(el):
+    return sum([1 for i in el if i in vowels])
+
+def count_vowels_in_n(n):
+    return [count_vowels_in_el(el) for el in n]
+
+def rhythm(count_vowels):
+    return len(set(count_vowels)) == 1
+
+def rez(rhythm_rez):
+    if rhythm_rez:
+        return "Парам пам-пам"
+    else:
+        return "Пам парам"
+
+
+count_vowels = count_vowels_in_n(n)
+rhythm_rez = rhythm(count_vowels)
+
+print(rez(rhythm_rez))
+
+
