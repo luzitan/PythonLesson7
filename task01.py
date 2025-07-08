@@ -11,7 +11,6 @@
 3. Из списка numbers берётся произведение всех чисел.
 
 """
-import math
 from functools import reduce
 
 
