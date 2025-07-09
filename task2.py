@@ -16,7 +16,30 @@ print_operation_table(lambda x, y: x * y)
  6 12 18 24 30 36
 """
 
-def operation():
+# def print_operation_table(operation, num_rows=6, num_columns=6):
+#     for i in range(1, num_rows + 1):
+#         row_results = []
+#         for j in range(1, num_columns + 1):
+#             row_results.append(str(operation(i, j)))
+#         print(" ".join(row_results))
+#
+#
+# print_operation_table(lambda x, y: x * y)
 
 
+# # Вариант 2 (компактнее)
+# def print_operation_table(operation, num_rows=6, num_columns=6):
+#     res = [[str(operation(i, j)) for j in range(1, num_columns + 1)] for i in range(1, num_rows + 1)]
+#
+#     for row in res:
+#         print(' '.join(map(str, row)))
+#
+#
+# print_operation_table(lambda x, y: x * y)
+
+# # Вариант 3 (ещё компактнее)
+#
 def print_operation_table(operation, num_rows=6, num_columns=6):
+    print("\n".join(" ".join(str(operation(i, j)) for j in range(1, num_columns + 1)) for i in range(1, num_rows + 1)))
+
+print_operation_table(lambda x, y: x * y)
