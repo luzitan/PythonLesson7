@@ -29,30 +29,12 @@
 #     print("Пам парам")
 
 
+# Вариант с lambda-функцией и map
+
 n = "пара-ра-рам рам-пам-папам па-ра-па-дам"
-n = n.split()
-vowels = ["а", "у", "е", "о", "и", "я", "ю", "ы", "э", "ё"]
+vowels = "аеёиоуыэюя"
 
+phrases = n.split()
+counts = list(map(lambda phrase: sum(map(lambda ch: ch in vowels, phrase.lower())), phrases))
 
-def count_vowels_in_el(el):
-    return sum([1 for i in el if i in vowels])
-
-def count_vowels_in_n(n):
-    return [count_vowels_in_el(el) for el in n]
-
-def rhythm(count_vowels):
-    return len(set(count_vowels)) == 1
-
-def rez(rhythm_rez):
-    if rhythm_rez:
-        return "Парам пам-пам"
-    else:
-        return "Пам парам"
-
-
-count_vowels = count_vowels_in_n(n)
-rhythm_rez = rhythm(count_vowels)
-
-print(rez(rhythm_rez))
-
-
+print("Парам пам-пам" if all(map(lambda x: x == counts[0], counts)) else "Пам парам")
